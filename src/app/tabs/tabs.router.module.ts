@@ -4,49 +4,49 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'devfest2018',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'accueil',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../acceuil/acceuil.module').then(m => m.AcceuilPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'sessions',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../sessions/sessions.module').then(m => m.SessionsPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'presentateurs',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../presentateurs/presentateurs.module').then(m => m.PresentateursPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/devfest2018/accueil',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/devfest2018/accueil',
     pathMatch: 'full'
   }
 ];
