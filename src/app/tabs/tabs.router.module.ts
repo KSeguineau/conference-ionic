@@ -36,11 +36,6 @@ const routes: Routes = [
               import('../presentateurs/presentateurs.module').then(m => m.PresentateursPageModule)
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: '/devfest2018/accueil',
-        pathMatch: 'full'
       }
     ]
   },

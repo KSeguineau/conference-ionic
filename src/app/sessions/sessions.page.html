@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list >
+    <ion-item *ngFor="let session of sessionTab" button (click)="afficherDetails(session.id)">
+      <ion-label>
+        <h3>{{session.title}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
