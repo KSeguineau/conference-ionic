@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DonneesService} from '../service/donnees.service';
 import Session from '../models/Session';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sessions',

@@ -1,15 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sessions</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <ion-list >
-    <ion-item *ngFor="let session of sessionTab" button (click)="afficherDetails(session.id)">
-      <ion-label>
-        <h3>{{session.title}}</h3>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+<ion-content color="dark">
+    <ion-list class=" py-no">
+        <ion-item color="dark" *ngFor="let session of sessionTab" button (click)="afficherDetails(session.id)">
+            <ion-label>
+                <h3>{{session.title}}</h3>
+            </ion-label>
+            <ion-icon name="information-circle-outline"></ion-icon>
+        </ion-item>
+    </ion-list>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary" class="ion-text-center">
+        <ion-title>Sessions</ion-title>
+    </ion-toolbar>
+</ion-footer>
