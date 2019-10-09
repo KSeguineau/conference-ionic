@@ -19,7 +19,6 @@ export class AcceuilPage implements OnInit {
     this.donneesService.recupererDate().subscribe((scheduleTab) => {
       this.dateDebut = new Date(scheduleTab[0].date).toLocaleDateString();
       this.dateFin = new Date(scheduleTab[scheduleTab.length - 1].date).toLocaleDateString();
-      console.log(localStorage.getItem('schedule'));
     });
   }
 
