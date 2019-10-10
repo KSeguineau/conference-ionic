@@ -12,7 +12,8 @@ const routes: Routes = [
     path: '',
     component: PresentateursPage
   },
-  { path: ':id', loadChildren: './details-presentateur/details-presentateur.module#DetailsPresentateurPageModule' }
+  { path: ':id', loadChildren: () =>
+        import('./details-presentateur/details-presentateur.module').then(m => m.DetailsPresentateurPageModule) }
 ];
 
 @NgModule({

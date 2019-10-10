@@ -12,7 +12,8 @@ const routes: Routes = [
     path: '',
     component: SessionsPage
   },
-  { path: ':id', loadChildren: './details-session/details-session.module#DetailsSessionPageModule' }
+  { path: ':id', loadChildren: () =>
+        import('./details-session/details-session.module').then(m => m.DetailsSessionPageModule) }
 ];
 
 @NgModule({
