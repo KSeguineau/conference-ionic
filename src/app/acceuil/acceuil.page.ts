@@ -16,6 +16,9 @@ export class AcceuilPage implements OnInit {
 
 
   ngOnInit() {
+    /**
+     * recupere la date de début et de fin de l’évenement
+     */
     this.donneesService.recupererDate().subscribe((scheduleTab) => {
       this.dateDebut = new Date(scheduleTab[0].date).toLocaleDateString();
       this.dateFin = new Date(scheduleTab[scheduleTab.length - 1].date).toLocaleDateString();

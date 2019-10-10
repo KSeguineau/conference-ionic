@@ -1,8 +1,26 @@
+/**
+ * interface representant un presentateur
+ */
 export default interface Presentateur {
+    /**
+     * id du presentateur
+     */
     id: number;
+    /**
+     * nom du presentateur
+     */
     name: string;
+    /**
+     * featured du presentateur
+     */
     featured: boolean;
+    /**
+     * societe du presentateur
+     */
     company: string;
+    /**
+     * logo de la societe du presentateur
+     */
     companyLogo: string;
     country: string;
     photoUrl: string;
