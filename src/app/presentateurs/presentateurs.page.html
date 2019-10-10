@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>presentateurs</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content color="dark">
+  <ion-list class=" py-no">
+    <ion-item color="dark" *ngFor="let presentateur of presentateurTab" button (click)="afficherDetails(presentateur.id)">
+      <ion-avatar slot="start">
+        <img [src]="'https://devfest2018.gdgnantes.com/'+ presentateur.photoUrl">
+      </ion-avatar>
+      <ion-label>{{presentateur.name}}</ion-label>
+      <ion-icon name="information-circle-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>Sessions</ion-title>
+  </ion-toolbar>
+</ion-footer>

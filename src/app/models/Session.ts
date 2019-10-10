@@ -1,3 +1,5 @@
+import Presentateur from "./Presentateur";
+
 export default interface Session {
     id: number;
     title: string;
@@ -11,6 +13,7 @@ export default interface Session {
     tags: string[];
     complexity: string;
     speakers: number[];
+    presentateurs: Presentateur[];
 }
 
 

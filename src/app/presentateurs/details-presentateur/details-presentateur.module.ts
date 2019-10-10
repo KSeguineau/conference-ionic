@@ -5,14 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PresentateursPage } from './presentateurs.page';
+import { DetailsPresentateurPage } from './details-presentateur.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: PresentateursPage
-  },
-  { path: ':id', loadChildren: './details-presentateur/details-presentateur.module#DetailsPresentateurPageModule' }
+    component: DetailsPresentateurPage
+  }
 ];
 
 @NgModule({
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PresentateursPage]
+  declarations: [DetailsPresentateurPage]
 })
-export class PresentateursPageModule {}
+export class DetailsPresentateurPageModule {}

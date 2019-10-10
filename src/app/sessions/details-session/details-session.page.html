@@ -1,13 +1,31 @@
+<ion-content color="dark">
+    <ion-col>
+        <ion-row class="ion-text-center ion-margin-vertical">
+            <ion-title>{{(session|async).type}}</ion-title>
+        </ion-row>
+        <ion-row class="ion-padding-horizontal ion-padding-vertical">
+            <ion-text>{{(session|async).description}}</ion-text>
+        </ion-row>
+    </ion-col>
 
-<ion-content>
+  <ion-title> Presentateurs: </ion-title>
+    <ng-container *ngFor="let speakers of (session | async).presentateurs">
+        <ion-item color="dark" (click)="detailsPresentateurs(speakers.id)" >
+            <ion-avatar slot="start">
+                <img [src]="'https://devfest2018.gdgnantes.com/'+ speakers.photoUrl">
+            </ion-avatar>
+            <ion-label>{{speakers.name}}</ion-label>
+        </ion-item>
+    </ng-container>
+
 
 </ion-content>
 
-<ion-footer >
-  <ion-toolbar color="primary" class="ion-text-center">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/devfest2018/sessions"></ion-back-button>
-    </ion-buttons>
-    {{id}}
-  </ion-toolbar>
+<ion-footer>
+    <ion-toolbar color="primary" class="ion-text-center">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/devfest2018/sessions"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{(session | async).title}}</ion-title>
+    </ion-toolbar>
 </ion-footer>

@@ -1,27 +1,41 @@
 import {Component, Input, OnInit} from '@angular/core';
 import Session from '../../models/Session';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {DonneesService} from '../../service/donnees.service';
+import {zip, Observable, of} from 'rxjs';
+import Presentateur from '../../models/Presentateur';
+import {flatMap, tap} from "rxjs/operators";
 
 @Component({
-  selector: 'app-details-session',
-  templateUrl: './details-session.page.html',
-  styleUrls: ['./details-session.page.scss'],
+    selector: 'app-details-session',
+    templateUrl: './details-session.page.html',
+    styleUrls: ['./details-session.page.scss'],
 })
 export class DetailsSessionPage implements OnInit {
 
   id: string;
+  session: Observable<Session>;
+  presentateursTab: Observable<Presentateur[]>;
 
   // Injection du service ActivatedRoute
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private donneesService: DonneesService) {
 
 
-    this.id = route.snapshot.paramMap.get('id');
   }
 
-  retour(){
-    this.router.navigate(['/devfest2018/sessions']);
+  detailsPresentateurs(id: number){
+    this.router.navigate(['/devfest2018/presentateurs/' + id]);
+
   }
+
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      // récupération du paramètre id
+      this.id = params.get('id');
+      this.session = this.donneesService.recupererSessionsById(this.id);
+      });
+
   }
+
 
 }
