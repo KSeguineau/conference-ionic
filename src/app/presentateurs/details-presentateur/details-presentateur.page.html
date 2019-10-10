@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>details-presentateur</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content color="dark">
 
-<ion-content>
+  <ion-col >
+    <ion-row class="ion-padding-horizontal ion-padding-vertical ion-justify-content-center">
+      <ion-img *ngIf="presentateur|async" [src]="'https://devfest2018.gdgnantes.com/'+ (presentateur | async).photoUrl"></ion-img>
+    </ion-row>
+    <ion-row>
+      <ion-text class="ion-padding-horizontal ion-padding-vertical">{{(presentateur | async).bio}}</ion-text>
+    </ion-row>
+
+
+    <ion-list class="py-no">
+    <ion-item color="dark"  *ngFor="let s of sessions| async" button (click)="detailsSessions(s.id)">
+      <ion-icon class="ion-padding-horizontal" name="calendar"></ion-icon>
+      <ion-label>{{s.title}}</ion-label>
+    </ion-item>
+    </ion-list>
+
+  </ion-col>
+
+
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/devfest2018/sessions"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{(presentateur | async).name}}</ion-title>
+  </ion-toolbar>
+</ion-footer>

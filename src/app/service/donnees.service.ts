@@ -36,19 +36,19 @@ export class DonneesService {
             return of(JSON.parse(localStorage.getItem('sessions')));
         }
         return this.recupererSessionAvecPresentateur().pipe(map(([sessionTab, presentateurTab]) => {
-            sessionTab.map((session) => {
-                if (session.speakers) {
-                    session.presentateurs = [];
-                    session.speakers.map((id) => session.presentateurs.push(presentateurTab.
-                    find((presentateur) => presentateur.id === id)));
-                } else {
-                    session.presentateurs = [];
-                }
-                return session;
-            });
-            return sessionTab;
-        }),
-        tap((sessionTab) => localStorage.setItem('sessions', JSON.stringify(sessionTab))));
+                sessionTab.map((session) => {
+                    if (session.speakers) {
+                        session.presentateurs = [];
+                        session.speakers.map((id) => session.presentateurs.push(
+                            presentateurTab.find((presentateur) => presentateur.id === id)));
+                    } else {
+                        session.presentateurs = [];
+                    }
+                    return session;
+                });
+                return sessionTab;
+            }),
+            tap((sessionTab) => localStorage.setItem('sessions', JSON.stringify(sessionTab))));
     }
 
     recupererSessionsById(id: string): Observable<Session> {
@@ -62,6 +62,20 @@ export class DonneesService {
         return this.recupererSessions().pipe(map((sessionTab) => sessionTab.find((session) => session.id === parseInt(id, 10))));
     }
 
+    recupererSessionsByIdPresentateur(id: number): Observable<Session[]> {
+        if (localStorage.getItem('sessions')) {
+            const sessionsTab: Session[] = JSON.parse(localStorage.getItem('sessions'));
+            return of(sessionsTab.filter((session) => {
+                if (session.speakers) {
+                    return session.speakers.find((idSp) => idSp === id);
+                } else {
+                    return false;
+                }
+            }));
+        }
+        return this.recupererSessions().pipe(map((sessionTab) => sessionTab.filter((session) => session.id === id)));
+    }
+
     recupererPresentateurs(): Observable<Presentateur[]> {
         if (localStorage.getItem('presentateurs')) {
             return of(JSON.parse(localStorage.getItem('presentateurs')));
@@ -69,12 +83,12 @@ export class DonneesService {
         return this.http.get<any>(environment.apiDevFestUrl + '/speakers', {withCredentials: true})
             .pipe(map((objectSpeakers) => Object.values(objectSpeakers) as Presentateur[]),
                 map((presentateurTab) => presentateurTab.map((presentateur) => {
-                    if (typeof(presentateur.id) === 'string') {
+                    if (typeof (presentateur.id) === 'string') {
                         presentateur.id = parseInt(presentateur.id, 10);
                     }
                     return presentateur;
                 })),
-                tap( (presentateurTab) => localStorage.setItem('presentateurs', JSON.stringify(presentateurTab))));
+                tap((presentateurTab) => localStorage.setItem('presentateurs', JSON.stringify(presentateurTab))));
     }
 
     recupererPresentateurById(id: string): Observable<Presentateur> {

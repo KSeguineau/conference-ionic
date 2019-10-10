@@ -15,7 +15,6 @@ export class DetailsSessionPage implements OnInit {
 
   id: string;
   session: Observable<Session>;
-  presentateursTab: Observable<Presentateur[]>;
 
   // Injection du service ActivatedRoute
   constructor(private route: ActivatedRoute, private router: Router, private donneesService: DonneesService) {
@@ -23,7 +22,7 @@ export class DetailsSessionPage implements OnInit {
 
   }
 
-  detailsPresentateurs(id: number){
+  detailsPresentateurs(id: number) {
     this.router.navigate(['/devfest2018/presentateurs/' + id]);
 
   }
