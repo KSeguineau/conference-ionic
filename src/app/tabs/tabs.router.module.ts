@@ -36,6 +36,16 @@ const routes: Routes = [
               import('../presentateurs/presentateurs.module').then(m => m.PresentateursPageModule)
           }
         ]
+      },
+      {
+        path: 'telephone',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../telephone/telephone.module').then(m => m.TelephonePageModule)
+          }
+        ]
       }
     ]
   },

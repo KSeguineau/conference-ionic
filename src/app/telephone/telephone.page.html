@@ -1,0 +1,29 @@
+
+
+<ion-content color="dark">
+
+    <ion-col *ngIf="detailsTelephone | async as details">
+      <ion-row>
+        <ion-title class="ion-text-center">Platform: {{details.platform}}</ion-title>
+      </ion-row>
+      <ion-row>
+        <ion-title class="ion-text-center">Version: {{details.osVersion}}</ion-title>
+      </ion-row>
+      <ion-row>
+        <ion-title class="ion-text-center"> UUID: {{details.uuid}}</ion-title>
+      </ion-row>
+      <ion-row>
+        <ion-title class="ion-text-center">Model: {{details.model}}</ion-title>
+      </ion-row>
+      <ion-row *ngIf="connection | async as conn">
+        <ion-title class="ion-text-center">Connection: {{conn.connectionType}}</ion-title>
+      </ion-row>
+    </ion-col>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>Téléphone</ion-title>
+  </ion-toolbar>
+</ion-footer>
