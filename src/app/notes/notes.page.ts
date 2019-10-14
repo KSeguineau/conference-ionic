@@ -16,7 +16,7 @@ export class NotesPage implements OnInit {
     photos: CameraPhoto[] = [];
     notes: string;
 
-    constructor(private route: ActivatedRoute, private telephoneService: TelephoneServiceService, private platform: Platform) {
+    constructor(private route: ActivatedRoute, private telephoneService: TelephoneServiceService, public platform: Platform) {
     }
 
     ngOnInit() {
