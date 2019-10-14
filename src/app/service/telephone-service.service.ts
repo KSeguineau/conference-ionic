@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {CameraPhoto, CameraResultType, CameraSource, Plugins} from '@capacitor/core';
+import {Contacts, Contact, ContactField, ContactName} from '@ionic-native/contacts/ngx';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TelephoneServiceService {
 
-    constructor() {
+    constructor(private contacts: Contacts) {
     }
 
     prendrePhotos(): Promise<CameraPhoto> {
@@ -21,7 +22,19 @@ export class TelephoneServiceService {
         return Plugins.Storage.set({key, value});
     }
 
-    recupererCache(key: string): Promise<{value: string}> {
-      return Plugins.Storage.get({key});
+    recupererCache(key: string): Promise<{ value: string }> {
+        return Plugins.Storage.get({key});
+    }
+
+    ajouterContact(presentateur) {
+        this.contacts.find(['name']).then((result) => {
+            if (!result.find((contact) => contact.name === presentateur.name)) {
+                const contact = this.contacts.create();
+                contact.name = new ContactName(null, presentateur.name);
+                contact.save();
+            }
+        });
+
+
     }
 }

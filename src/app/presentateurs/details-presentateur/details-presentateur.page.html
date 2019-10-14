@@ -1,5 +1,8 @@
 <ion-content color="dark">
 
+  <button (click)="ajouterContact()">
+    <label>Ajouter aux Contacts</label>
+  </button>
   <ion-col >
     <ion-row class="ion-padding-horizontal ion-padding-vertical ion-justify-content-center">
       <ion-img *ngIf="presentateur|async" [src]="'https://devfest2018.gdgnantes.com/'+ (presentateur | async).photoUrl"></ion-img>

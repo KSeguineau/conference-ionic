@@ -4,6 +4,7 @@ import {DonneesService} from "../../service/donnees.service";
 import Presentateur from '../../models/Presentateur';
 import {Observable} from 'rxjs';
 import Session from '../../models/Session';
+import {TelephoneServiceService} from '../../service/telephone-service.service';
 
 @Component({
     selector: 'app-details-presentateur',
@@ -16,7 +17,7 @@ export class DetailsPresentateurPage implements OnInit {
     presentateur: Observable<Presentateur>;
     sessions: Observable<Session[]>;
 
-    constructor(private route: ActivatedRoute, private router: Router, private donneesService: DonneesService) {
+    constructor(private route: ActivatedRoute, private router: Router, private donneesService: DonneesService, private telephoneService: TelephoneServiceService) {
     }
 
     ngOnInit() {
@@ -32,4 +33,7 @@ export class DetailsPresentateurPage implements OnInit {
     this.router.navigate(['/devfest2018/sessions/' + id]);
   }
 
+  ajouterContact() {
+        this.presentateur.subscribe((presentateur) => this.telephoneService.ajouterContact(presentateur));
+  }
 }
