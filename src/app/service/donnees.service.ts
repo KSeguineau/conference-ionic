@@ -6,14 +6,16 @@ import {from, Observable, of, zip} from 'rxjs';
 import {filter, flatMap, map, tap} from 'rxjs/operators';
 import Session from '../models/Session';
 import Presentateur from '../models/Presentateur';
+import {TelephoneServiceService} from './telephone-service.service';
 
 
 @Injectable({
     providedIn: 'root'
 })
+// TODO changer localstorage pour Plugins.Storage
 export class DonneesService {
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private telephoneService: TelephoneServiceService) {
     }
 
     recupererSessionAvecPresentateur(): Observable<[Session[], Presentateur[]]> {
@@ -25,7 +27,7 @@ export class DonneesService {
 
     recupererDate(): Observable<ScheduleInterface[]> {
         if (localStorage.getItem('schedule')) {
-            return of(JSON.parse(localStorage.getItem('schedule')));
+            return  of(JSON.parse(localStorage.getItem('schedule')));
         }
         return this.http.get<ScheduleInterface[]>(environment.apiDevFestUrl + '/schedule', {withCredentials: true})
             .pipe(tap(((scheduleTab) => localStorage.setItem('schedules', JSON.stringify(scheduleTab)))));
