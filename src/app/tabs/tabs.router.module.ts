@@ -46,7 +46,8 @@ const routes: Routes = [
                 import('../telephone/telephone.module').then(m => m.TelephonePageModule)
           }
         ]
-      }
+      },
+      { path: 'notes', loadChildren: () => import('../notes/notes.module').then(m => m.NotesPageModule) }
     ]
   },
   {

@@ -1,0 +1,45 @@
+<ion-content color="dark">
+
+    <ion-row>
+        <ion-col>
+            <ion-button expand="block" (click)="prendrePhotos()">
+                <ion-icon name="camera"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button expand="block" (click)="recupererPhotos()">
+                <ion-icon name="image"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-col>
+        <ion-row class="ion-justify-content-center">
+            <ion-text class="ion-text-center ion-margin-vertical">Notes</ion-text>
+        </ion-row>
+        <ion-row>
+            <ion-textarea [(ngModel)]="notes" placeholder="Notes de la session"
+                          (ionBlur)="enregistrerNotes()"></ion-textarea>
+        </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <ion-row class="ion-justify-content-center">
+        <ion-text class="ion-text-center ion-margin-vertical">Photos</ion-text>
+      </ion-row>
+        <ion-row *ngFor="let photo of photos" class="ion-margin ion-padding">
+            <ion-img [src]="'data:image/' + photo.format + ';base64,' + photo.base64String "></ion-img>
+        </ion-row>
+    </ion-col>
+
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary" class="ion-text-center">
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]="'/devfest2018/sessions/'+id"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Notes</ion-title>
+    </ion-toolbar>
+</ion-footer>
+

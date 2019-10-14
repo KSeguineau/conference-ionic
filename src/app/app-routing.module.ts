@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  { path: 'telephone', loadChildren: './telephone/telephone.module#TelephonePageModule' }
+  },
+  { path: 'telephone', loadChildren: () => import('./telephone/telephone.module').then(m => m.TelephonePageModule) },
+
 
 
 ];

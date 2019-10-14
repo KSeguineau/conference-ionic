@@ -27,6 +27,10 @@ export class DetailsSessionPage implements OnInit {
 
   }
 
+  ajouterNotes() {
+    this.router.navigate(['/devfest2018/notes/' + this.id]);
+  }
+
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       // récupération du paramètre id

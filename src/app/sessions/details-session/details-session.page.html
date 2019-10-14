@@ -8,9 +8,9 @@
         </ion-row>
     </ion-col>
 
-  <ion-title> Presentateurs: </ion-title>
+    <ion-title> Presentateurs:</ion-title>
     <ng-container *ngFor="let speakers of (session | async).presentateurs">
-        <ion-item color="dark" button (click)="detailsPresentateurs(speakers.id)" >
+        <ion-item color="dark" button (click)="detailsPresentateurs(speakers.id)">
             <ion-avatar slot="start">
                 <img [src]="'https://devfest2018.gdgnantes.com/'+ speakers.photoUrl">
             </ion-avatar>
@@ -18,7 +18,11 @@
         </ion-item>
     </ng-container>
 
-
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="ajouterNotes()">
+            <label>Notes</label>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
 
 <ion-footer>

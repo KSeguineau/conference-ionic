@@ -1,0 +1,7 @@
+{
+  "appId": "fr.kseguineau.conference",
+  "appName": "conference-ionic",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
