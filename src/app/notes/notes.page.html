@@ -6,7 +6,7 @@
                 <ion-icon name="camera"></ion-icon>
             </ion-button>
         </ion-col>
-        <ion-col>
+        <ion-col *ngIf="platform.is('mobile')">
             <ion-button expand="block" (click)="recupererPhotos()">
                 <ion-icon name="image"></ion-icon>
             </ion-button>

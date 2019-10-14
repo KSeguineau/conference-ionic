@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {TelephoneServiceService} from '../service/telephone-service.service';
 import {CameraPhoto} from '@capacitor/core';
+import {Platform} from '@ionic/angular';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class NotesPage implements OnInit {
     photos: CameraPhoto[] = [];
     notes: string;
 
-    constructor(private route: ActivatedRoute, private telephoneService: TelephoneServiceService) {
+    constructor(private route: ActivatedRoute, private telephoneService: TelephoneServiceService, private platform: Platform) {
     }
 
     ngOnInit() {
